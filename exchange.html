@@ -221,14 +221,14 @@
                     let en_name = info.english_name;
 
                     // 비트코인과 이더리움은 정렬에서 제외시키고 맨앞에 둔다.
-                    if (ids[1] == 'BTC' || ids[1] == 'ETH') {
+                    if (ids[1] == 'BTC' || ids[1] == 'ETH' || ids[1] =="XRP" || ids[1] == "DOGE") {
                         head.push({
                             market : info.market, name, en_name,
                         })
-                    } else {
-                        KRW.push({
-                            market : info.market, name, en_name,
-                        })
+                    } else if (ids[1] == "PEPE") {
+                       KRW.push({
+                           market : info.market, name, en_name,
+                       })
                     }
                     
                 }
@@ -310,7 +310,11 @@
 
         function drawChart(trace, info, divId) {
             var data = [trace];
-                
+            if (info.market == "KRW-PEPE") {
+                info.name = "GRQ"
+                info.market = "KRW-GRQ"
+            }
+
             var layout = {
                 dragmode: 'zoom', 
                 margin: {
@@ -351,7 +355,6 @@
             let value = window.localStorage.getItem(key);
             return value;
         }
-
 
     </script>
     <meta charset="utf-8" />
