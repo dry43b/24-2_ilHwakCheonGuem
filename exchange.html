@@ -337,7 +337,9 @@
                     //range: ['2017-01-03 12:00', '2017-02-15 12:00'], 
                     range: [trace.x[0], trace.x[trace.x.length - 1]],
                     rangeslider: {range: [trace.x[0], trace.x[trace.x.length - 1]]}, 
-                    title: info.name + ' / ' + info.market + ' / ' + String(info.current_price), 
+                    // title: {
+                    //     text: info.name + ' / ' + info.market + ' / ' + String(info.current_price)
+                    // },
                     type: 'date',
                     rangeslider: {
                         visible: false
@@ -371,8 +373,8 @@
         <div>
             <header class="header">
                 <a class="logo" href="main.html">
-                    <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
-                        <image href="logo.png" width="150" height="150"/>
+                    <svg width="150" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <image href="logo.png" width="150" height="100"/>
                     </svg>
                 </a>
                 <nav class="gnb">
@@ -387,23 +389,35 @@
                   </a>
                 </nav>
             </header>
-            <main>
-                <table style="width:50%; min-width:300px"><tr><td>
-                    <div style="float: left; font-size: 15px; margin:4px"> 캔들 단위 </div>
-                    <select name="selectUnit" id="selectUnit" class="form-select form-select-sm" style="width:20%; min-width:100px; vertical-align:middle" onchange="selectUnitOnChange(this.selectedIndex, this.value, this.options[this.selectedIndex].text)">
-                        <option id="0" value="1">1분</option>
-                        <option id="1" value="5">5분</option>
-                        <option id="2" value="60">1시간</option>
-                        <option id="3" value="1440">일봉</option> <!-- 일봉 옵션 -->
-                    </select>
+            <main style="min-height: 800px; font-family: 'Nanum Gothic', sans-serif;">
+                <div>
+                    <table style="width:50%; min-width:300px"><tr><td>
+                        <div style="float: left; font-size: 15px; margin:4px"> 캔들 단위 </div>
+                        <select name="selectUnit" id="selectUnit" class="form-select form-select-sm" style="width:20%; min-width:100px; vertical-align:middle" onchange="selectUnitOnChange(this.selectedIndex, this.value, this.options[this.selectedIndex].text)">
+                            <option id="0" value="1">1분</option>
+                            <option id="1" value="5">5분</option>
+                            <option id="2" value="60">1시간</option>
+                            <option id="3" value="1440">일봉</option> <!-- 일봉 옵션 -->
+                        </select>
+                        </td>
+                        <td>
+                            <div style="float: left; font-size: 15px; margin:4px"> 마켓 </div>
+                            <select name="selectMarket0" id="selectMarket0" class="form-select form-select-sm select_coin" onchange="selectOnChange(0, this.value, this.options[this.selectedIndex].text)"></select>
+    
+                        </td>
+                        </tr>
                     </table>
-                
-                    <select name="selectMarket0" id="selectMarket0" class="form-select form-select-sm select_coin" onchange="selectOnChange(0, this.value, this.options[this.selectedIndex].text)"></select>
+                </div>
                     <br/><br/>
+                <div>
                     <div id="chart0" style="width:100%;height:400px;float: both" hidden></div>
+                </div>
+                <div style="text-align: center;">
+                    <Button class="button_black">매수하기</Button>
+                  </div>
             </main>
             <footer class="footer">
-                <p class="text1">© 2024 ilHwakCheonGuem. All rights reserved.</p>
+                <p> class="text1">© 2024 ilHwakCheonGuem. All rights reserved.</p>
                 <nav class="gnb2">
                   <a class="text2" href="/terms">
                     Terms of Service

@@ -1,4 +1,8 @@
 @charset "utf-8";
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
 h1 {
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
