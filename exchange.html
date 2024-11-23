@@ -191,8 +191,13 @@
 
                 for (let i = 0; i < lnth; i += 1) {
                     option = document.createElement("option");
-                    option.text = gAllCoinsInfo.KRW[i].name;
-                    option.value = gAllCoinsInfo.KRW[i].market;
+                    if (gAllCoinsInfo.KRW[i].name == "페페") {
+                        option.text = "GRQ";
+                        option.value = "KRW-GRQ";
+                    } else {
+                        option.text = gAllCoinsInfo.KRW[i].name;
+                        option.value = gAllCoinsInfo.KRW[i].market;
+                    }
                     select.appendChild(option);
                 }
             }
@@ -252,6 +257,9 @@
         // 특정 코인 캔들 정보 리스트 가져오기
         async function getBitPrice({count, market, unit, name}) {
             let url; 
+            if (market == "KRW-GRQ") {
+                market = "KRW-PEPE"
+            }
 			if (unit === '1440') {
 			// 일봉 요청 URL 설정
 			url = `https://api.upbit.com/v1/candles/days?market=${market}&count=${count}`;
@@ -311,8 +319,7 @@
         function drawChart(trace, info, divId) {
             var data = [trace];
             if (info.market == "KRW-PEPE") {
-                info.name = "GRQ"
-                info.market = "KRW-GRQ"
+                info.market = "KRW-GRQ";
             }
 
             var layout = {
@@ -396,7 +403,7 @@
                     <div id="chart0" style="width:100%;height:400px;float: both" hidden></div>
             </main>
             <footer class="footer">
-                <p class="text1">© 2024 VirtualCoin. All rights reserved.</p>
+                <p class="text1">© 2024 ilHwakCheonGuem. All rights reserved.</p>
                 <nav class="gnb2">
                   <a class="text2" href="/terms">
                     Terms of Service
