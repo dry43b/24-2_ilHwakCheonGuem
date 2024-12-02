@@ -29,6 +29,7 @@ db.connect((err) => {
 app.post('/register', async (req, res) => {
     const { fullname, email, password } = req.body;
     if (!fullname || !email || !password) {
+        console.log(fullname, email, password);
         return res.status(400).json({ error: 'All fields are required' });
     }
     try {
