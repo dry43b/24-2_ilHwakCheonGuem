@@ -28,7 +28,9 @@ db.connect((err) => {
 // 회원가입 API
 app.post('/register', async (req, res) => {
     const { fullname, email, password } = req.body;
-
+    if (!fullname || !email || !password) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
     try {
         // 비밀번호 암호화
         const hashedPassword = await bcrypt.hash(password, 10);
