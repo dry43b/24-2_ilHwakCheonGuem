@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // MySQL 연결
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'your_password',
+    host: 'capstone-db.cpueqy00ga5w.ap-northeast-2.rds.amazonaws.com',
+    user: 'admin',
+    password: 'H135MY630',
     database: 'user_management',
 });
 
