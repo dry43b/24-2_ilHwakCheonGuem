@@ -19,15 +19,6 @@ const db = mysql.createConnection({
     database: 'user_management',
 });
 
-db.query(query, [email, fullname, hashedPassword], (err, result) => {
-    if (err) {
-        console.error('Database error:', err);
-        return res.status(500).json({ error: 'Database error' });
-    }
-    res.json({ message: 'User registered successfully' });
-});
-
-
 db.connect((err) => {
     if (err) {
         console.error('MySQL 연결 실패:', err);
