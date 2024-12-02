@@ -22,22 +22,25 @@
           </div>
           <form class="form0" action="/register" method="POST">
             <div class="div2">
-              <Label class="label0">Full Name</Label>
-              <Input class="input0" id="fullname" name="fullname" placeholder="John Doe" required type="text" />
-            </div>
+                <Label class="label0">Full Name</Label>
+                <Input class="input0" id="fullname" name="fullname" placeholder="John Doe" required type="text" />
+              </div>
             <div class="div2">
               <Label class="label0">Email</Label>
               <Input class="input0" id="email" name="email" placeholder="m@example.com" required type="email" />
             </div>
-            <div class="div2">
+            <div className="div2">
               <Label class="label0">Password</Label>
               <Input class="input0" id="password" name="password" required type="password" />
             </div>
+            <div className="div2">
+                <Label class="label0">Confirm Password</Label>
+                <Input class="input0" id="password" required type="password" />
+              </div>
             <Button class="button_black_long" type="submit">
               Sign Up
             </Button>
           </form>
-          
           <div class="div3">
             <a class="a0">
                 Already have an account?
