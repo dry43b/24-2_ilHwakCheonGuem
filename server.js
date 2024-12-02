@@ -28,7 +28,10 @@ db.connect((err) => {
 // 회원가입 API
 app.post('/register', async (req, res) => {
     const { fullname, email, password } = req.body;
-    console.log("req.body:", req.body);
+    console.log(fullname); // "John Doe"
+    console.log(email);    // "john@example.com"
+    console.log(password); // "123456"
+
     if (!fullname || !email || !password) {
         return res.status(400).json({ error: 'All fields are required' });
     }
