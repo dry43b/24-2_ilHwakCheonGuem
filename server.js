@@ -49,6 +49,7 @@ app.post('/register', async (req, res) => {
     try {
         // 비밀번호 암호화
         const hashedPassword = await bcrypt.hash(password, 10);
+        console.log('Hashed Password:', hashedPassword);
 
         // MySQL에 데이터 삽입
         const query = 'INSERT INTO users (email, fullname, password) VALUES (?, ?, ?)';
