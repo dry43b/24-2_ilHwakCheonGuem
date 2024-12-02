@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // 라우트 설정
 app.get('/', (req, res) => {

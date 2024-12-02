@@ -2,9 +2,12 @@ const express = require('express');
 const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const path = require('path'); // 경로 조작을 위한 모듈
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MySQL 연결
 const db = mysql.createConnection({
