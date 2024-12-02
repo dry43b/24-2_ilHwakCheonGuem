@@ -5,6 +5,17 @@
         <title>main</title>
         <link rel="stylesheet" type="text/css" href="common.css">
         <link rel="stylesheet" type="text/css" href="sign_in.css">
+        <script>
+          document.querySelector('.form0').addEventListener('submit', function (e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+        
+            if (password !== confirmPassword) {
+              e.preventDefault();
+              alert('Passwords do not match!');
+            }
+          });
+        </script>
     </head>
     <body>
       <header class="header">
@@ -35,7 +46,7 @@
             </div>
             <div className="div2">
                 <Label class="label0">Confirm Password</Label>
-                <Input class="input0" id="password" required type="password" />
+                <Input class="input0" id="confirm-password" required type="password" />
               </div>
             <Button class="button_black_long" type="submit">
               Sign Up
