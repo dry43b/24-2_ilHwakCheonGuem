@@ -3,6 +3,8 @@ const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const path = require('path'); // 경로 조작을 위한 모듈
+const cors = require('cors'); 
+const nodemailer = require('nodemailer');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -10,6 +12,14 @@ app.use(bodyParser.json());
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail', 
+    auth: {
+        user: 'a59603712@gmail.com', 
+        pass: 'dqzd snza rzdx qvcs',
+    },
+});
 
 // MySQL 연결
 const db = mysql.createConnection({
@@ -55,6 +65,28 @@ app.post('/register', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'Server error' });
     }
+});
+
+app.post('/send-email', (req, res) => {
+    const { email, message } = req.body;
+
+console.log('Received request:', { email, message });
+
+    const mailOptions = {
+        from: 'a59603712@gmail.com',
+        to: email,
+        subject: '입력하신 정보입니다',
+        text: message,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error occurred:', error);
+            return res.status(500).send('이메일 전송 실패');
+        }
+        console.log('Email sent:', info.response);
+        res.status(200).send('이메일 전송 성공');
+    });
 });
 
 // 서버 실행
